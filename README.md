@@ -1,2 +1,2 @@
-# start
-Start project HTML-markup with Gulp
+# Start project
+Для быстрого старта верстки с автоматизацией (gulp) и препроцессором (sass)
