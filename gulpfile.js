@@ -2,15 +2,18 @@
 
 var gulp = require("gulp"),
     sass = require("gulp-sass"),
+    plumber = require("gulp-plumber"),
     postcss = require("gulp-postcss"),
     autoprefixer = require("autoprefixer"),
     mqpacker = require("css-mqpacker"),
-    csso = require("gulp-csso"),
+    beautify = require("gulp-cssbeautify"),
+    minify = require("gulp-csso"),
     rename = require("gulp-rename"),
     server = require("browser-sync").create();
 
 gulp.task("style", function() {
-    gulp.src("assets/sass/style.scss")
+    gulp.src("src/sass/style.scss")
+        .pipe(plumber())
         .pipe(sass())
         .pipe(postcss([
             autoprefixer({
@@ -20,11 +23,12 @@ gulp.task("style", function() {
                 sort: true
             })
         ]))
+        .pipe(beautify())
         .pipe(gulp.dest("./build/css"))
-        .pipe(csso())
+        .pipe(server.stream())
+        .pipe(minify())
         .pipe(rename("style.min.css"))
-        .pipe(gulp.dest("build/css"))
-        .pipe(server.stream());
+        .pipe(gulp.dest("build/css"));
 });
 
 gulp.task("start-server", function() {
@@ -36,6 +40,6 @@ gulp.task("start-server", function() {
         ui: false
     })
 
-    gulp.watch("assets/sass/**/*.{scss,s sass}", ["style"]);
+    gulp.watch("src/sass/**/*.{scss,sass}", ["style"]);
     gulp.watch("*.html").on("change", server.reload);
 });
