@@ -9,6 +9,9 @@ var gulp = require("gulp"),
   beautify = require("gulp-cssbeautify"),
   minify = require("gulp-csso"),
   rename = require("gulp-rename"),
+  svgstore = require("gulp-svgstore"),
+  svgmin = require("gulp-svgstore"),
+  imagemin = require("gulp-imagemin"),
   server = require("browser-sync").create();
 
 gulp.task("style", function() {
@@ -34,7 +37,7 @@ gulp.task("style", function() {
     .pipe(gulp.dest("build/css"));
 });
 
-gulp.task("start-server", function() {
+gulp.task("serve", function() {
   server.init({
     server: "./",
     notify: false,
@@ -45,4 +48,13 @@ gulp.task("start-server", function() {
 
   gulp.watch("src/sass/**/*.{scss,sass}", ["style"]);
   gulp.watch("*.html").on("change", server.reload);
+});
+
+gulp.task("svgstore", function() {
+  return gulp.src("src/img/icons/*.svg")
+    .pipe(svgstore({
+      inlineSvg: true
+    }))
+    .pipe(rename("sprite.svg"))
+    .pipe(gulp.dest("build/img"))
 });
