@@ -19,15 +19,27 @@ h3 {
 }
 
 h1 {
-    font-size: 2.5rem;
+    font-size: 2rem;
+
+    @media (min-width: 600px) {
+      font-size: 2.5rem;
+    }
 }
 
 h2 {
-    font-size: 2rem;
+    font-size: 1.5rem;
+
+    @media (min-width: 600px) {
+      font-size: 2rem;
+    }
 }
 
 h3 {
-    font-size: 1.5rem;
+    font-size: 1.2rem;
+
+    @media (min-width: 600px) {
+      font-size: 1.5rem;
+    }
 }
 
 ul {
@@ -49,7 +61,7 @@ a {
 .container {
   max-width: 750px;
   margin: 0 auto;
-  padding: 20px 0;
+  padding: 20px 10px;
 }
 
 .container::after {
@@ -72,10 +84,15 @@ a {
 }
 
 .face {
-  float: left;
+  text-align: center;
+
+  @media (min-width: 700px) {
+    float: left;
+  }
 
   &__image {
     border-radius: 50%;
+    text-align: center;
   }
 
   &__caption {
@@ -106,3 +123,4 @@ a {
     margin-bottom: 15px;
   }
 }
+
