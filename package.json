@@ -1,0 +1,27 @@
+{
+  "name": "start-project",
+  "version": "1.0.0",
+  "description": "Start project",
+  "scripts": {
+    "start": "gulp style && gulp serve"
+  },
+  "author": "Vladislav Samatov",
+  "license": "ISC",
+  "devDependencies": {
+    "autoprefixer": "^6.7.1",
+    "browser-sync": "^2.18.6",
+    "css-mqpacker": "^5.0.1",
+    "gulp": "^3.9.1",
+    "gulp-concat": "^2.6.1",
+    "gulp-cssbeautify": "^0.1.3",
+    "gulp-csso": "^2.0.0",
+    "gulp-imagemin": "^3.1.1",
+    "gulp-plumber": "^1.1.0",
+    "gulp-postcss": "^6.3.0",
+    "gulp-rename": "^1.2.2",
+    "gulp-sass": "^3.1.0",
+    "gulp-svgmin": "^1.2.3",
+    "gulp-svgstore": "^6.1.0",
+    "gulp-uglify": "^2.1.0"
+  }
+}
